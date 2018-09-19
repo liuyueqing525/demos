@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="newsConstruction/baidu.png">
+    <title>百度一下，你就知道</title>
+    <style type="text/css">
+    p {
+        border: medium double black;
+        height: 200px;
+        width: 100px;
+    }
+
+    #qww {
+        overflow: hidden;
+        word-break: break-all;
+    }
+    </style>
+</head>
+
+<body>
+    <label>姓名</label>
+    <input type="text" name="name" placeholder="请输出姓名" required>
+    <form>
+        <span>
+			<label for="name">Name:<input id="name" name="name" required></label>
+		</span>
+        <p id="qww">QAQQQQQQQQQQQQQQQQQQQQQQQSsssssssssssssssssssssssssssssssssssssssssssssss</p>
+        <button type="submit">Submit</button>
+        <button type="reset">重置</button>
+        <button id="test" name="123" yue="xiaoyueyue" friend="heizi" onclick="console.log(this.getAttribute('yue'),this.getAttribute('friend'))">test</button>
+    </form>
+    <p id="p1" onmousedown="getEventTrigger(event)">
+        Click on this paragraph. An alert box will show which element triggered the event.</p>
+</body>
+<script type="text/javascript">
+var box = document.createElement("div");
+box.innerHTML = "<button id='1' data-name='xiaoyueyue' data-age='25' data-friend='heizi' onclick='alertInfo(this.dataset)'>点击</button>"
+document.body.appendChild(box);
+
+//name,age,friend
+function alertInfo(data) {
+    alert('大家好,我是' + data.name + '，我今年' + data.age + '岁了，我的好朋友是' + data.friend + '！')
+}
+
+
+function getEventTrigger(event) {
+    x = event.target;
+    alert(x);
+};
+
+
+console.log(''||'abc')//'abc'
+console.log(!window.abc)//true
+console.log(null||'123')
+var a=100;
+console.log(!a)
+
+function Foo(name,age){
+	this.name = name;
+	this.age=age;
+	this.class='class 1';
+	//return this
+}
+
+
+var obj={};
+obj.a=20;
+console.log(obj.__proto__===Object.prototype)
+
+var f= {a:20,b:30};
+Object.prototype={ toString:function(){ console.log('我是重写的toString 方法'); } }
+console.log(f.toString());
+
+var o = Object.create(Object.prototype, {
+  // foo会成为所创建对象的数据属性
+  foo: { 
+    writable:true,
+    configurable:true,
+    value: "hello" 
+  },
+  // bar会成为所创建对象的访问器属性
+  bar: {
+    configurable: false,
+    get: function() { return 10 },
+    set: function(value) {
+      console.log("Setting `o.bar` to", value);
+    }
+  }
+});
+console.log(o);//{foo:'hello'}
+
+function foo1(){
+	console.log(foo1.__proto__.constructor)
+}
+var test = Object.create({x:123,y:345});
+console.log(test.__proto__);
+
+
+function Person() {
+  this.name = 'hanzichi';
+  this.age = 10;
+}
+ 
+Person.prototype.sex = 'female';
+ 
+var a = new Person();
+ 
+a.__proto__.sex = 'male';
+ 
+console.log(Person.prototype.sex);  // male
+console.log(a.sex); // male
+
+
+var o ={x:1}
+v1=o.hasOwnProperty('x');
+v2 =o.hasOwnProperty('toString');
+ 
+console.log(v1.__proto__)
+function extend(o,p){
+	for(prop in p){
+		o[prop]=p[prop];
+	}
+	return o;
+}
+
+var p ={
+	x:1.0,
+	y:1.0,
+
+	get r(){
+		return Math.sqrt(this.x*this.x+this.y*this.y);
+	},
+	set r(newvalue){
+		var oldvalue=Math.sqrt(this.x*this.x+this.y*this.y);
+		var ratio =newvalue/oldvalue;
+		this.x*=ratio;
+		this.y*=ratio;
+	},
+
+	get theta(){
+		return Math.atan(this.x,this.y);
+	}
+}
+function inherit(p){
+	if(p==null)throw TypeError();
+	if(Object.create)return Object.create(p);
+	var t =typeof p;
+	if(t !=='object'&&t!=='function')throw TypeError();
+	function f(){};
+	f.prototype=p;
+	return new f();
+}
+console.log(p)
+var q=inherit(p);
+q.x=1,q.y=1;
+console.log(q.r,q.theta)
+
+var serialnum={
+	$n:0,
+	get next(){return this.$n++},
+
+	set next(n){
+		if(n>=this.$n)this.$n=n;
+		else throw '序列号的值不能比当前值小';
+	}
+};
+var se =inherit(serialnum);
+console.log(se.next)
+console.log(Object.getOwnPropertyDescriptor(serialnum,'$n'))
+console.log(se.$n)
+
+var obj ={};
+console.log(obj.__proto__===Object.getPrototypeOf(obj))
+Object.getPrototypeOf(obj).toString = function(){
+	return 'toString';
+}
+var ceshi={};
+console.log(ceshi.toString())
+
+
+function Fn(){};
+var fn =new Fn();
+var proto =Object.getPrototypeOf(fn);
+proto.name='Goose';
+console.log(fn.name);
+console.log('proto===Fn.prototype?'+(proto===Fn.prototype));
+console.log(proto.isPrototypeOf(fn));
+
+
+ var a = new Object();
+ a.value = 1;
+ b = a;
+ b.value = 2;
+ console.log(a.value);//2
+
+var a=[];
+var len=a.length=13;
+for(var i =0;i<len;i++){
+	a[i]=i;
+};
+console.log(a)
+console.log(len);
+
+
+
+</script>
+</html>

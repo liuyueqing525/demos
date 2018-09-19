@@ -1,0 +1,22 @@
+{
+  "name": "webpacktest",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "loadsh": "0.0.2",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "ladash": "^1.2.0",
+    "style-loader": "^0.23.0"
+  }
+}

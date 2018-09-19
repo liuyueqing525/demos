@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo </title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var foo = Object.create(null); //foo是一个对象,但它是游离的,不属于已有的那棵原型树
+	var bar = Object.create(foo); //bar的原型是foo
+	var baz = Object.create(foo); //baz的原型是foo
+
+
+	
+</script>
+</html>

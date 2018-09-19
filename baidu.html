@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="baidu.png">
+    <title>百度一下，你就知道</title>
+</head>
+<style type="text/css">
+.clearfix:after,
+.clearfix:before {
+    display: block;
+    content: "";
+    height: 0;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.navbar {
+    z-index: 1;
+    width: 100%;
+    height: 32px;
+    text-align: center;
+    color: #000;
+}
+
+.weather {
+    float: left;
+}
+
+.search {
+    width: 500px;
+}
+</style>
+
+<body>
+    <div class="container ">
+        <div class="banner clearfix">
+            <div class="weather">
+                天气:<img src="" />33℃ 轻度 105|
+                <a href="">换肤</a> <a href="">消息</a>
+            </div>
+        </div>
+    </div>
+    <form action="http://www.baidu.com/baidu" target="_self">
+        <table bgcolor="#FFFFFF">
+            <tr>
+                <td>
+                    <input name=tn type=hidden value=baidu>
+                    <a href="http://www.baidu.com/"><img src="https://gss0.bdstatic.com/70cFsjip0QIZ8tyhnq/img/logo-80px.gif" alt="Baidu" align="bottom" border="0"></a>
+                    <input type=text name=word size=30>
+                    <input type="submit" value="百度一下">
+                </td>
+            </tr>
+            <div id="list"></div>
+        </table>
+    </form>
+    <button>button1</button>
+    <button>button2</button>
+    <button>button3</button>
+    <button>button4</button>
+    <button>button5</button>
+    <div id="ulList"></div>
+
+    <ul>
+    	<li class="item5"></li>
+    	<li class="item4"></li>
+    	<li class="item3"></li>
+    	<li class="item2"></li>
+    	<li class="item1"></li>
+    </ul>
+    <ul id="testnode"></ul>
+</body>
+<script type="text/javascript">
+// var scope = "global scope";
+
+// function checkScope() {
+//     var scope = "local scope";
+
+//     function f() {
+//         return scope;
+//     }
+//     return f();
+// }
+// checkScope(); //=> "local scope"
+// var btns = document.getElementsByTagName('button');
+// for (var i = 0, len = btns.length; i < len; i++) {
+//     (function(i) {
+//         btns[i].onclick = function() {
+//             alert(i + 1);
+//         }
+//     })(i)
+
+// }
+// var color = "blue";
+
+// function changeColor() {
+//     if (color === "blue") {
+//         color = "red";
+//     } else {
+//         color = "blue";
+//     }
+//     console.log(color)
+// }
+
+// console.log(changeColor());
+
+// function fun() {　　　
+//     var n = 1;
+
+//     add = function() {
+//         n += 1
+//     }
+
+//     function fun2() {
+//         console.log(n);
+//     }
+
+//     return fun2;
+// }
+
+// var result = fun();　　
+// result(); // 1
+// add();
+// result(); // 2
+// var add = function() {
+//     var counter = 0;
+//     var plus = function() { return counter += 1; }
+//     return plus;
+// }
+
+// var puls2 = add();
+// console.log(puls2());
+// console.log(puls2());
+// console.log(puls2());
+// // 计数器为 3 var a=[];
+
+// var a = [];
+// // for (var i = 0; i < 10; i++) {
+// //     a[i] = function() {
+// //         console.log(i);
+// //     };
+// // }
+// // a[6](); //10 
+
+
+// (function() {
+//     var now = new Date();
+//     if (now.getMonth() == 0 && now.getDay() == 1) {
+//         alert('happy new year!')
+//     } else {
+//         console.log('现在不是新年哦!')
+//     }
+//     console.log(now)
+// })();
+
+// function outputNumbers(count) {
+//     (function() {
+//         for (var i = 0; i < count; i++) {
+//             console.log(i);
+//         }
+//     })();
+//     console.log(i);
+// }
+// outputNumbers(5);
+
+
+// 　　　　
+// function numberGenerator() {
+//     var num = 1;
+
+//     function checkNumber() {
+//         console.log(num);
+//     }
+//     num++;
+//     return checkNumber;
+// }
+// var number = numberGenerator();
+// number(); // 2
+function gogo() {
+    var a1 = 100;
+    return function(p) {
+
+        let s = p;
+        s += 1;
+        return s;
+    }
+}
+console.log(gogo()(12))
+var button = document.getElementsByTagName("button");
+
+for (let i = 0; i < button.length; i++) {
+    button[i].onclick = function() {
+        console.log(i)
+    }
+}
+var list = document.getElementById('list');
+
+for (var i = 1; i <= 5; i++) {
+    var item = document.createElement('li');
+    item.appendChild(document.createTextNode('Item ' + i));
+    (function(i) {
+        item.onclick = function(ev) {
+            console.log('Item ' + i + ' is clicked.');
+        }
+    })(i);
+
+    list.appendChild(item);
+}
+
+var scope = 'gb scope';
+
+function checkscope() {
+    var scope = 'lc scope';
+
+    function f() { return scope }
+    return f;
+}
+console.log(checkscope()());
+
+var value = 1;
+
+function foo() {
+    console.log(value);
+}
+
+function bar() {
+    var value = 2;
+    foo();
+}
+
+bar();
+console.log(this instanceof Object);
+console.log(this)
+
+
+let x = 'outer value'
+
+
+
+if ("a" in window) {
+    var a = 1;
+
+    function goo() {
+        var sp = 2;
+        console.log(sp);
+        return sp;
+    }
+    let sp = goo();
+    console.log(sp);
+}
+var temp = 0;
+for (var i = 1; i < 10; i++) {
+    temp = temp + i;
+    console.log(temp);
+}
+
+function test() {
+    console.log(window);
+    var window = 5;
+}
+test();
+
+var testvar = '外变量';
+console.log(testvar);
+
+function test11() {
+    var testvar = '内部变量';
+    console.log(testvar);
+}
+test11();
+console.log(testvar);
+
+function test22() {
+    const var1 = '常量';
+    console.log(var1);
+}
+test22();
+window.onload = function() {
+    var ul = document.getElementById("ulList");
+    for (var i = 0; i <= 5; i++) {
+        // 创建一个li对象
+        var li = document.createElement("li");
+        // li标签内内容设置为：Itemi
+        li.appendChild(document.createTextNode("Item" + i));
+        // 声明一个块级变量j，并将i赋给j
+        let j = i;
+        // 绑定点击事件
+        li.onclick = function() {
+            alert("Item" + j + "is clicked.");
+        };
+        ul.appendChild(li);
+    }
+};
+(function() {
+
+    // 声明一个JSON对象
+
+    var JsonObj = {};
+
+    //定义该对象的属性及属性值
+
+    JsonObj.name = "对象的属性";
+
+    JsonObj.method = function() {
+
+        console.log("测试是否能够调用该方法");
+
+        return JsonObj.name;
+
+    }
+
+    // 通过操作window对象，供外部访问该对象的属性和方法
+
+    window.GlobalObj = JsonObj;
+
+}());
+
+// 调取该对象的方法并接受返回值
+
+var name = GlobalObj.method(); // 获取的是返回值name
+
+console.log(name); //对象属性
+
+//  只获取该方法但不调用
+
+var method = GlobalObj.method; // 获取的是对象GlobalObj2的method1()方法
+
+console.log(method + '\n');
+
+// function (){
+
+//  alert("测试是否能够调用该方法");
+
+//   return JsonObj.name;
+
+//}
+
+// 调用接受到的方法，但不接受返回值
+
+method();
+
+function counter(n) {
+    return {
+        get count() { return n++; },
+        set count(m) {
+            if (m >= n) { n = m } else throw Error("count can not be set to a lower num")
+        }
+    };
+}
+var c = counter(5000);
+c.count;
+c.count;
+console.log(function(s) { return s; }(12))
+
+
+var a = 20;
+var b = 50;
+(function() {
+    c = 30;
+    c = a + 50;
+    console.log(this);
+
+    function goog() {
+        var d = 20;
+        d = d + 50;
+
+        function bar() {
+            var b = d + 15;
+            console.log(b);
+        }
+        console.log(this);
+        console.log(d);
+        return bar;
+    }
+    var barCloure = goog();
+    barCloure();
+    console.log("444");
+})();
+var m = 50;
+console.log(m);
+
+
+
+
+
+function fun1() {
+    console.log('fun1');
+
+    (function fun2() {
+        console.log('fun2');
+
+        (function fun3() {
+            console.log('fun3');
+        })()
+
+    })()
+}
+fun1();
+
+function ffun3() {
+    console.log('fun3')
+}
+
+function ffun2() {
+    console.log('fun2')
+    ffun3();
+}
+
+function ffun1() {
+    console.log('fun1')
+    ffun2();
+}
+
+ffun1();
+console.log(this);
+
+(function lool() {
+    console.log(this);
+    var obj = {
+        name: '112',
+        age: 500,
+        say: function() {
+            console.log(this)
+        },
+    }
+    obj.say();
+})()
+
+
+function fun(n, o) {
+    console.log(o);
+    return {
+        fun: function(m) {
+            return fun(m, n);
+        }
+    };
+}
+console.log('???????????????????')
+
+var a = fun(0);
+a.fun(1);
+a.fun(2);
+a.fun(3);
+var b = fun(0).fun(1).fun(2).fun(3);
+var c = fun(0).fun(1);
+c.fun(2);
+c.fun(3);
+
+console.log(a, b)
+console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
+
+var Prison = function() {
+    var food = 'rice';
+    return function Prisoner() {
+        return food;
+    };
+}
+
+console.log('ssssssssssssssssssssssssssssssss')
+//注意只是定义了一个函数，并未调用，这时候函数是没有绑定任何对象
+function identify() {
+    return this.name.toUpperCase();
+}
+//同上面的函数,但是这个函数内部有点复杂，如果下面的代码看不懂
+//可以只看上面的函数
+function speak() {
+    var greeting = "Hello, I'm " + identify.call(this);
+    console.log(this)
+    console.log(greeting);
+}
+
+var me = { //定义了一个字面量对象
+    name: "Kyle"
+};
+
+var you = { //定义了一个字面量对象
+    name: "Reader"
+};
+//通过call方式把函数identify分别绑定到两个对象上
+//这时的this是指向me对象，和you对象
+identify.call(me); // KYLE  
+identify.call(you); // READER
+
+//通过call方式把函数call分别绑定到两个对象上
+//这时的this是指向me对象，和you对象
+speak.call(me); // Hello, I'm KYLE
+speak.call(you); // Hello, I'm READER
+
+function foo() { //定义了一个函数
+    console.log(this.a);
+}
+
+var obj = { //定义了一个对象字面量
+    a: 2,
+    foo: foo //函数作为对对象的属性
+};
+
+var bar = obj.foo; //把obj对象的函数foo属性赋值给bar变量
+//这里就是理解这个问题的关键，如果你现在认为调用bar()的时候绑定的对象
+//是obj那就完全搞错了。这个时候仅仅是把函数foo赋值给了var变量，
+//并没有把对象也给bar变量，因为这里还不是foo()函数的调用位置，现在
+//foo函数还没有绑定对象，那么调用bar()的时候对象到底是谁？不知道。
+//调用的时候才知道。
+
+// var a = "oops, global"; // 任然是全局对象的属性
+// bar(); // "oops, global" 这里执行的是默认绑定，this就是去全局对象啦
+
+function foo(something) { //定义函数
+    console.log(this.a, something);
+    return this.a + something;
+}
+
+var obj = { //对象字面量
+    a: 2
+};
+
+var bar = function() {
+    return foo.apply(obj, arguments);
+    //返回绑定了对象和传入参数的函数调用
+    //这个语句在js的代码中非常的常见
+};
+
+var b = bar(3); // 2, 3  
+
+console.log(b); // 5
+
+
+function add(a, b) {
+    console.log(this)
+    return a + b;
+
+}
+
+function sub(a, b) {
+    return a - b;
+    console.log(this);
+}
+var a1 = add.apply(sub, [4, 2]);　　 //sub调用add的方法
+var a2 = sub.apply(add, [4, 2]);
+console.log(a1); //6     
+console.log(a2); //2
+
+/*call的用法*/
+var a1 = add.call(sub, 4, 2);
+console.log(a1)
+
+function doo() {
+    var testul = document.getElementById('testnode');
+    for (var i = 0; i < 5; i++) {
+        var testli = document.createElement('li');
+        testli.appendChild(document.createTextNode('test' + i));
+        testul.appendChild(testli)
+    }
+
+}
+doo();
+
+
+'use strict'
+function fun1(){
+	console.log(this);
+}
+fun1.call(1);
+fun1.call('123');
+fun1.call(true);
+fun1.call({name:'jack'});
+fun1.call(null);
+fun1.call(undefined);
+
+function Animal(){    
+    this.name = "Animal";    
+    this.showName = function(){    
+        alert(this.name);    
+    }    
+}    
+  
+function Cat(){    
+    this.name = "Cat";    
+}    
+   
+var animal = new Animal();    
+var cat = new Cat();    
+        
+//输入结果为"Cat"      
+animal.showName.apply(cat,[]);  
+console.log(cat)
+
+function closureExample() {
+    var that = this; // 通过变量捕获this的引用
+    setTimeout( function(){
+        console.log( that.a ); //console.log(this.a);会有什么结果？
+    }, 1000);
+}
+
+var obj = {
+    a: 2
+};
+console.log(obj.a)
+closureExample.call( obj ); // 2 ,closureExample函数调用的时候通过
+//call硬绑定了obj对象,this就是obj对象的引用
+
+</script>
+
+</html>

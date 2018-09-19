@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+
+<head>
+    <title>Eventloop</title>
+</head>
+
+<body>
+    <table style="border: 1px red solid">
+        <tr>
+            <td>outer table</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>inner table</td>
+        </tr>
+    </table>
+</body>
+<script type="text/javascript">
+'use strict';
+</script>
+<script type="text/javascript">
+'use strict';
+console.log('this is strict');
+
+console.log(a);
+
+var a = 11;
+var v = 1;
+var o = {
+    get v() { return v; },
+    set v(a) { v = new Date().getFullYear() - a; }
+};
+o.v = 10;
+console.log(o.v)
+
+/*function Person() {
+    var age = new Date().getFullYear() - 18;
+    Object.defineProperty(this, 'age', {
+        get: function() { alert('内部数据存储为：' + age); return new Date().getFullYear() - age; },
+        set: function(value) { age = value; }
+    });
+}
+var p = new Person();
+p.age = 1994;
+alert('外部获取的值为：' + p.age);*/
+
+let x = 1;
+function fooo(a=1,b=function(){
+	x=2
+}){
+	let x=3;
+	b();
+	console.log(x);
+}
+fooo();
+
+console.log(x)
+
+function f(){
+	console.log('i\'m outside');
+};
+(function () {
+  if (false) {
+    // 重复声明一次函数f
+    function f() { console.log('I am inside!'); }
+  }
+
+  f();
+}());
+
+function f1() { console.log('I am outside!'); }
+(function () {
+  var f = undefined;
+  if (false) {
+    function f1() { console.log('I am inside!'); }
+  }
+  f1();
+}());
+console.log((0.2-0.1)===(0.3-0.2))
+
+console.log(Math.pow(2,53))
+console.log(Number.MAX_VALUE)
+console.log(Number.MIN_VALUE)
+console.log(0b11)
+console.log(f1.__proto__+'\n');
+
+var objs={
+	0.1:'goose',
+	0.01:'gose',
+}
+console.log(objs[0.1],objs[0.01])
+var kets=Object.keys(objs);
+console.log(kets);
+
+var sub1=Object.defineProperty({},"p",{
+	value:'试试',
+	configurable:false,
+})
+console.log(sub1.p)
+console.log(sub1)
+var sw=['123','132','112']
+console.log(sw[1],sw[0],sw[2],sw.length)
+
+var news = Object.defineProperty({},'last', {value:NONE,configurable:false,enumberable:false})
+</script>
+
+</html>

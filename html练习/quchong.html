@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>数组去重</title>
+</head>
+
+<body>
+	<form>
+		<input type="time" name="">
+	</form>
+</body>
+<script type="text/javascript">
+Array.prototype.unique1 = function() {
+    var res = [this[0]];
+    for (var i = 1; i < this.length; i++) {
+        var repeat = false;
+        for (var j = 0; j < res.length; j++) {
+            if (this[i] == res[j]) {
+                repeat = true;
+                break;
+            }
+        }
+        if (!repeat) {
+            res.push(this[i]);
+        }
+    }
+    return res;
+}
+var s = [1, 2, 3, 4, 5, 6, 1, 3, 4, 5, 9, 9, 0];
+var a = s.unique1();
+console.log(a)
+
+Array.prototype.unique2 = function() {
+    var arr = [this[0]];
+    for (var i = 1; i < this.length; i++) {
+        var repeat = false;
+        for (var j = 0; j < arr.length; j++) {
+            if (this[i] == arr[j]) {
+                repeat = true;
+                break;
+            }
+        }
+        if (!repeat) {
+            arr.push(this[i])
+        }
+    }
+    return arr;
+};
+var d = [1, 2, 3, 4, 5, 6, 1, 3, 4, 5, 9, 9, 8, 0];
+var b = d.unique2();
+console.log(b)
+Array.prototype.sort = function() {
+    if (this.length < 1) { return this; }
+    var index = Math.floor(this.length / 2)
+    var res = this.splice(index, 1)[0];
+    var left = [];
+    var right = [];
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] <= res) {
+            left.push(this[i]);
+        } else {
+            right.push(this[i]);
+        }
+    }
+    return [...left.sort(), res, ...right.sort()];
+}
+var qwe = [1, 2, 4, 3]
+console.log(d.sort());
+
+function quickSort(arr) {
+    //如果数组<=1,则直接返回
+    if (arr.length <= 1) { return arr; }
+    var pivotIndex = Math.floor(arr.length / 2);
+    //找基准，并把基准从原数组删除
+    var pivot = arr.splice(pivotIndex, 1)[0];
+    //定义左右数组
+    var left = [];
+    var right = [];
+
+    //比基准小的放在left，比基准大的放在right
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] <= pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+    //递归
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}
+console.log(quickSort(d))
+
+function isDigit(s) {
+    var patrn = /^[0-9]{1,20}$/g;
+    if (patrn.exec(s)) { return true };
+    return false;
+}
+console.log(isDigit('123'))
+String.prototype.isPasswd = function() {
+    var patn = /^(\w){6,20}$/;
+    if (!patn.exec(this)) return false;
+    return true;
+}
+console.log(('1234567').isPasswd());
+
+function ff(a, a) {
+    console.log(arguments[1]);
+}
+ff(1, 2);
+
+
+// var href = window.location.href;
+var href = "http://www.runoob.com/jquery/misc-trim.html?channelid=12333&name=xiaoming&age=23";
+console.log(href);
+var args = href.split('?');
+if (args == href) {
+    console.log(args);
+}
+var arr = args[1].split("&");
+var obj = {};
+for (var i = 0; i < arr.length; i++) {
+    var arg = arr[i].split("=");
+    obj[arg[0]] = arg[1];
+}
+var username = "QAQ";
+document.cookie = "name=" + username;
+var username = document.cookie.split(";")[0].split("=")[1];
+
+console.log(obj);
+console.log(document.cookie['name']);
+
+(function() {
+    function a() {
+        alert('I am a');
+    }
+    outFunc = function() {
+        a();
+    }
+})()
+</script>
+
+</html>

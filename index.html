@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="">
+	<title>demo</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.container .row .label{
+			color:#000;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<label>省份</label><select name="" id="province">
+			<option value=""></option>
+		</select>
+		<label>城市</label><select name="" id="city">
+			<option value=""></option>
+		</select>
+		<label>乡镇</label><select name="" id="town">
+			<option value=""></option>
+		</select>
+	</div>
+
+</body>
+<script type="text/javascript" src="lib/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	let optionKinds = {
+          "province": {
+            "河北省": ['石家庄', '唐山', '邯郸', '保定', '沧州', '邢台市', '廊坊市', '承德市', '张家口', '衡水', '秦皇岛'],
+            "河南省": ['郑州', '开封', '洛阳', '南阳', '漯河', '许昌', '三门峡', '周口', '驻马店', '焦作', '濮阳', '安阳', '商丘', '信仰', '济源'],
+            "广东省": ['广州', '珠海市', '汕头', '韶关', '佛山', '江门', '江门', '河源', '江阳'],
+          },
+          "city": {
+            "石家庄": ['桥西区', '新华区', '长安区', '裕华区', '石家庄矿区', '路园区'],
+            "唐山": ['曹妃甸区', '古治区', '丰南区', '开平区', '丰润区', '路北区', '迁安市', '敦化市'],
+            "郑州": ['惠济区', '二七区', '管城回族区', '中原区', '金水区', '郑东新区'],
+            "焦作": ['解放区', '山阳区', '中站区', '马村区', '修武县', '武陟县', '温县', '博爱县', '沁阳市', '孟州市'],
+            "开封": ["龙亭区", '顺和回族区', '鼓楼区', '禹王台区', '祥符区']
+          },
+        };
+    
+
+</script>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 	 -->
+
+</head>
+
+<body>
+
+	<div id="test">I am an element with id #test</div>
+
+
+</body>
+<script type="text/javascript">
+/*function closureExample() {
+    var that = this; // 通过变量捕获this的引用
+    setTimeout(function() {
+        console.log(that.a); //console.log(this.a);会有什么结果？
+    }, 1000);
+}
+
+var obj = {
+    a: 2
+};
+var a = 3;
+
+closureExample.apply(obj);
+
+closureExample.call(obj); // 2 ,closureExample函数调用的时候通过
+//call硬绑定了obj对象,this就是obj对象的引用 
+*/
+
+function Animal(name) {
+    this.name = name || 'Animal';
+    this.sleep = function() {
+        console.log(this.name + '正在睡觉');
+    }
+}
+//原形方法
+Animal.prototype.eat = function(food) {
+    console.log(this.name + '正在吃' + food)
+}
+</script>
+<script type="text/javascript" language="javascript">
+function Cat() {}
+Cat.prototype = new Animal();
+Cat.prototype.name = 'cat';
+
+var cat = new Cat();
+console.log(cat);
+console.log(cat.name);
+console.log(cat.eat('fish'));
+console.log(cat.sleep());
+console.log(cat instanceof Animal);
+console.log(cat instanceof Cat);
+
+
+function Cat1(name) {
+    Animal.call(this);
+    this.name = name || 'Tom';
+}
+var cat1 = new Cat1();
+console.log(cat1.name);
+console.log(cat1.sleep());
+console.log(cat1 instanceof Animal);
+console.log(cat1 instanceof Cat1);
+
+function add(a, b) {
+    return a + b;
+}
+
+function sub(a, b) {
+    return a - b;
+}
+console.log(add.apply(sub, { a: [1, 66] }.a))
+console.log(add.call(sub, {
+    a: [1, 2, 3, 4, ],
+    b: {
+        bb: [1, 2, 3, 4, 5],
+        constNum: function(bb) { return bb }
+    }
+}.b.constNum([123])));
+
+
+function factorial (n) {
+    return !(n > 1) ? 1 : factorial(n - 1) * n;
+}
+
+console.log([1,2,3,4,5].map(function (n) {
+    return !(n > 1) ? 1 : /* what goes here? */ (n - 1) * n;
+}));
+
+
+var num=0;
+
+var ccc={
+	num:100,
+	baz:{
+		num:200,
+		bar:function(){
+			console.log(this.num);
+			return num;
+		}
+	}
+};
+ccc.baz.bar();
+console.log(ccc.baz.bar()+'11');
+var hello = ccc.baz.bar;
+hello();
+var scope;
+
+console.log('qwerty'.split('q',2));
+
+</script>
+<script type="text/javascript" src="test.js"></script>
+</html>
